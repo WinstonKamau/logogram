@@ -1,4 +1,4 @@
-## Logogram [codeclimate badge] [testing badge]
+## Logogram [![Maintainability](https://api.codeclimate.com/v1/badges/2c913b1aab08348e7ad8/maintainability)](https://codeclimate.com/github/WinstonKamau/logogram/maintainability) [testing badge]
 
 An application that aids its users memorise information
 
