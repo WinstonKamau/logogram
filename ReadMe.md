@@ -37,13 +37,22 @@ pip install -r requirements.txt
 ```
 3. Migrate the application
 ```
-cd src/logogram
-python manage.py migrate
+python src/logogram/manage.py migrate
 ```
 4. Run the development server
 ```
-cd src/logogram
-python manage.py runserver
+python src/logogram/manage.py runserver
+```
+
+5. Run tests
+- without coverage
+```
+python src/logogram/manage.py test
+```
+- with coverage
+```
+coverage run python src/logogram/manage.py test
+coverage report
 ```
 
 ### Run The Service
