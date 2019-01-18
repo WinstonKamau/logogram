@@ -1,4 +1,4 @@
-## Logogram [![Maintainability](https://api.codeclimate.com/v1/badges/2c913b1aab08348e7ad8/maintainability)](https://codeclimate.com/github/WinstonKamau/logogram/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cba7836dc3fa470889fb63e824688f74)](https://www.codacy.com/app/WinstonKamau/logogram?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WinstonKamau/logogram&amp;utm_campaign=Badge_Grade)[testing badge]
+## Logogram [![Maintainability](https://api.codeclimate.com/v1/badges/2c913b1aab08348e7ad8/maintainability)](https://codeclimate.com/github/WinstonKamau/logogram/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cba7836dc3fa470889fb63e824688f74)](https://www.codacy.com/app/WinstonKamau/logogram?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WinstonKamau/logogram&amp;utm_campaign=Badge_Grade) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [testing badge]
 
 An application that aids its users memorise information
 
