@@ -1,4 +1,4 @@
-## Logogram [![Maintainability](https://api.codeclimate.com/v1/badges/2c913b1aab08348e7ad8/maintainability)](https://codeclimate.com/github/WinstonKamau/logogram/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cba7836dc3fa470889fb63e824688f74)](https://www.codacy.com/app/WinstonKamau/logogram?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WinstonKamau/logogram&amp;utm_campaign=Badge_Grade) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![CircleCI](https://circleci.com/gh/WinstonKamau/logogram.svg?style=svg)](https://circleci.com/gh/WinstonKamau/logogram)
+## Logogram [![Maintainability](https://api.codeclimate.com/v1/badges/2c913b1aab08348e7ad8/maintainability)](https://codeclimate.com/github/WinstonKamau/logogram/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cba7836dc3fa470889fb63e824688f74)](https://www.codacy.com/app/WinstonKamau/logogram?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WinstonKamau/logogram&amp;utm_campaign=Badge_Grade) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![CircleCI](https://circleci.com/gh/WinstonKamau/logogram.svg?style=svg)](https://circleci.com/gh/WinstonKamau/logogram) [![Coverage Status](https://coveralls.io/repos/github/WinstonKamau/logogram/badge.svg)](https://coveralls.io/github/WinstonKamau/logogram)
 
 An application that aids its users memorise information
 
@@ -19,7 +19,7 @@ Step by step instructions on how to get the code setup locally. This may include
 * This project uses the following technologies:
 - Python - `3.7.0`
 - virtualenv - `16.0.0`
-* Application dependencies can be found [here](src/requirements.txt)
+* Application dependencies can be found [here](requirements.txt)
 
 ### Getting Started
 
@@ -27,7 +27,7 @@ Step by step instructions on how to get the code setup locally. This may include
 
 ```
 git clone https://github.com/WinstonKamau/logogram.git
-cd logogram/src
+cd logogram
 ```
 2. Create a virtual environment and install the dependencies needed for the application.
 ```
@@ -37,13 +37,22 @@ pip install -r requirements.txt
 ```
 3. Migrate the application
 ```
-cd src/logogram
-python manage.py migrate
+python src/logogram/manage.py migrate
 ```
 4. Run the development server
 ```
-cd src/logogram
-python manage.py runserver
+python src/logogram/manage.py runserver
+```
+
+5. Run tests
+- without coverage
+```
+python src/logogram/manage.py test
+```
+- with coverage
+```
+coverage run src/logogram/manage.py test
+coverage report
 ```
 
 ### Run The Service

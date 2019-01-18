@@ -10,7 +10,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "src/requirements.txt" }}
+          - v1-dependencies-{{ checksum "requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -19,20 +19,21 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r src/requirements.txt
+            pip install -r requirements.txt
 
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "src/requirements.txt" }}
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: run tests
           command: |
             . venv/bin/activate
-            cd src/logogram
-            python manage.py test
+            coverage run src/logogram/manage.py test
+            coverage html
+            COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} coveralls
 
       - store_artifacts:
-          path: test-reports
+          path: src/logogram/htmlcov
           destination: test-reports
