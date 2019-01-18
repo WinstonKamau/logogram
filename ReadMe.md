@@ -16,11 +16,35 @@ Step by step instructions on how to get the code setup locally. This may include
 
 ### Dependencies
 
-List of libraries, tools, etc needed (e.g. yarn, node.js, python, etc)
+* This project uses the following technologies:
+- Python - `3.7.0`
+- virtualenv - `16.0.0`
+* Application dependencies can be found [here](src/requirements.txt)
 
 ### Getting Started
 
-List of steps to get started (e.g. clone repo, submodule, .env file, etc)
+1. Clone this repository, and change directory into the src folder(this folder contains the code for the application): 
+
+```
+git clone https://github.com/WinstonKamau/logogram.git
+cd logogram/src
+```
+2. Create a virtual environment and install the dependencies needed for the application.
+```
+virtualenv --python=python3 venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+3. Migrate the application
+```
+cd src/logogram
+python manage.py migrate
+```
+4. Run the development server
+```
+cd src/logogram
+python manage.py runserver
+```
 
 ### Run The Service
 
