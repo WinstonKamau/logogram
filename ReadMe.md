@@ -51,7 +51,7 @@ python src/logogram/manage.py test
 ```
 - with coverage
 ```
-coverage run python src/logogram/manage.py test
+coverage run src/logogram/manage.py test
 coverage report
 ```
 
