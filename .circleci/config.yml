@@ -33,6 +33,7 @@ jobs:
             cd src/logogram
             coverage run manage.py test
             coverage html
+            COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} coveralls
 
       - store_artifacts:
           path: src/logogram/htmlcov
