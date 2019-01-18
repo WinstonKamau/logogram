@@ -19,7 +19,7 @@ Step by step instructions on how to get the code setup locally. This may include
 * This project uses the following technologies:
 - Python - `3.7.0`
 - virtualenv - `16.0.0`
-* Application dependencies can be found [here](src/requirements.txt)
+* Application dependencies can be found [here](requirements.txt)
 
 ### Getting Started
 
@@ -27,7 +27,7 @@ Step by step instructions on how to get the code setup locally. This may include
 
 ```
 git clone https://github.com/WinstonKamau/logogram.git
-cd logogram/src
+cd logogram
 ```
 2. Create a virtual environment and install the dependencies needed for the application.
 ```
