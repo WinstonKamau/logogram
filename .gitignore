@@ -4,3 +4,6 @@ venv/
 db.sqlite3
 # Ignore cache data
 __pycache__
+# Ignore coverage data
+htmlcov
+.coverage

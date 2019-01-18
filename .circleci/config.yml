@@ -31,8 +31,9 @@ jobs:
           command: |
             . venv/bin/activate
             cd src/logogram
-            python manage.py test
+            coverage run manage.py test
+            coverage html
 
       - store_artifacts:
-          path: test-reports
+          path: src/logogram/htmlcov
           destination: test-reports
