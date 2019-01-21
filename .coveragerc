@@ -1,3 +1,4 @@
 [report]
 omit = 
     */venv/*
+    */python3.7/*
