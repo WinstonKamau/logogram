@@ -16,44 +16,43 @@ Step by step instructions on how to get the code setup locally. This may include
 
 ### Dependencies
 
-* This project uses the following technologies:
-- Python - `3.7.0`
-- virtualenv - `16.0.0`
-* Application dependencies can be found [here](requirements.txt)
+This project uses the following technologies:
+* Python: `3.7.0`
+* virtualenv: `16.0.0`
+
+Application dependencies can be found [here](requirements.txt)
 
 ### Getting Started
 
-1. Clone this repository, and change directory into the src folder(this folder contains the code for the application): 
+#### Clone this repository, and change directory into the src folder(this folder contains the code for the application)
+    ```
+    git clone https://github.com/WinstonKamau/logogram.git
+    cd logogram
+    ```
+#### Create a virtual environment and install the dependencies needed for the application
+    ```
+    virtualenv --python=python3 venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    ```
+#### Migrate the application
+    ```
+    python src/logogram/manage.py migrate
+    ```
+#### Run the development server
+    ```
+    python src/logogram/manage.py runserver
+    ```
 
-```
-git clone https://github.com/WinstonKamau/logogram.git
-cd logogram
-```
-2. Create a virtual environment and install the dependencies needed for the application.
-```
-virtualenv --python=python3 venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-3. Migrate the application
-```
-python src/logogram/manage.py migrate
-```
-4. Run the development server
-```
-python src/logogram/manage.py runserver
-```
-
-5. Run tests
-- without coverage
-```
-python src/logogram/manage.py test
-```
-- with coverage
-```
-coverage run src/logogram/manage.py test
-coverage report
-```
+#### Run tests
+    ```
+    python src/logogram/manage.py test
+    ```
+Using coverage
+    ```
+    coverage run src/logogram/manage.py test
+    coverage report
+    ```
 
 ### Run The Service
 
