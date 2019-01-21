@@ -8,31 +8,31 @@ jobs:
 
     steps:
       - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
 
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
+            pipenv install -d
 
       - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
           paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"
 
       - run:
           name: run tests
           command: |
-            . venv/bin/activate
-            coverage run src/logogram/manage.py test
-            coverage html
-            COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN} coveralls
+            pipenv run coverage run src/logogram/manage.py test
+            pipenv run coverage html
+            export COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
+            pipenv run coveralls
 
       - store_artifacts:
           path: src/logogram/htmlcov
