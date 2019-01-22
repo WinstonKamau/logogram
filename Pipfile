@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+docopt = "==0.6.2"
+"flake8" = "==3.6.0"
+idna = "==2.8"
+mccabe = "==0.6.1"
+pycodestyle = "==2.4.0"
+pyflakes = "==2.0.0"
+requests = "==2.21.0"
+"urllib3" = "==1.24.1"
+certifi = "==2018.11.29"
+chardet = "==3.0.4"
+coverage = "==4.5.2"
+coveralls = "==1.5.1"
+
+[packages]
+pytz = "==2018.9"
+djangorestframework = "==3.9.1"
+Django = "==2.1.5"
+
+[requires]
+python_version = "3.7"

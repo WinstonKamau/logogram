@@ -29,29 +29,28 @@ Application dependencies can be found [here](requirements.txt)
     git clone https://github.com/WinstonKamau/logogram.git
     cd logogram
     ```
-#### Create a virtual environment and install the dependencies needed for the application
+#### Create a virtual environment and install the dependencies needed for the application for development
+Install pipenv based on the instructions on this [link](https://pipenv.readthedocs.io/en/latest/install/#installing-pipenv)
     ```
-    virtualenv --python=python3 venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+    pipenv --three install -d
     ```
 #### Migrate the application
     ```
-    python src/logogram/manage.py migrate
+    pipenv run src/logogram/manage.py migrate
     ```
 #### Run the development server
     ```
-    python src/logogram/manage.py runserver
+    pipenv run src/logogram/manage.py runserver
     ```
 
 #### Run tests
     ```
-    python src/logogram/manage.py test
+    pipenv run src/logogram/manage.py test
     ```
 Using coverage
     ```
-    coverage run src/logogram/manage.py test
-    coverage report
+    pipenv run coverage run src/logogram/manage.py test
+    pipenv run coverage report
     ```
 
 ### Run The Service
