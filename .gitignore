@@ -7,3 +7,5 @@ __pycache__
 # Ignore coverage data
 htmlcov
 .coverage
+# Ignore system dependent Makefile
+Makefile

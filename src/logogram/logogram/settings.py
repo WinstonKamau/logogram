@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'logogram_v1.apps.LogogramV1Config',
 ]
 
 MIDDLEWARE = [
