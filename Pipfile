@@ -16,6 +16,7 @@ certifi = "==2018.11.29"
 chardet = "==3.0.4"
 coverage = "==4.5.2"
 coveralls = "==1.5.1"
+pylint = "*"
 
 [packages]
 pytz = "==2018.9"

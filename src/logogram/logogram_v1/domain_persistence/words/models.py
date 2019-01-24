@@ -8,7 +8,9 @@ from django.utils import timezone
 class Words(models.Model):
     name = models.CharField(_('word_name'), max_length=30, blank=True)
     description = models.TextField(_('word_description'))
-    creation_date = models.DateTimeField(_('date_created'), default=timezone.now)
-    modification_date = models.DateTimeField(_('date_modified'), auto_now_add=True)
+    creation_date = models.DateTimeField(_('date_created'),
+                                         default=timezone.now)
+    modification_date = models.DateTimeField(_('date_modified'),
+                                             auto_now_add=True)
     flash_card = models.ForeignKey(FlashCards, on_delete=models.CASCADE)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)

@@ -1,5 +1,5 @@
-import os
-from django.test import TestCase, Client
+from django.test import TestCase
+
 
 class BaseTestCase(TestCase):
 

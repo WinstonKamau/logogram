@@ -121,3 +121,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'logogram_v1.Users'
+
+MIGRATION_MODULES = {"logogram_v1": "logogram_v1.domain_persistence.migrations"}

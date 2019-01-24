@@ -9,3 +9,5 @@ htmlcov
 .coverage
 # Ignore system dependent Makefile
 Makefile
+# Ignore visual studio code system dependent settings
+.vscode

@@ -3,6 +3,7 @@ from logogram_v1.tests.base_test import BaseTestCase
 from logogram_v1.domain_persistence.users.models import Users
 from django.db import IntegrityError
 
+
 class UsersModel(BaseTestCase):
 
     def setUp(self):

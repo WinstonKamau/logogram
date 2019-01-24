@@ -1,3 +1,6 @@
 flake8:
   enabled: true
   config_file: .flake8
+  exclude:
+    - "src/logogram/logogram_v1/domain_persistence/migrations/**"
+    - "src/logogram/logogram_v1/models/__.init__.py"
