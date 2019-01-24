@@ -119,3 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'logogram_v1.Users'
+
+MIGRATION_MODULES = {"logogram_v1": "logogram_v1.domain_persistence.migrations"}
