@@ -11,8 +11,8 @@ class Users(AbstractBaseUser, PermissionsMixin):
             'unique': _("The email address you entered has already been "
                         "registered.",), },
         max_length=255)
-    first_name = models.CharField(_('first_name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last_name'), max_length=30, blank=True)
+    first_name = models.CharField(_('first_name'), max_length=30)
+    last_name = models.CharField(_('last_name'), max_length=30)
     date_joined = models.DateTimeField(_('date_joined'), default=timezone.now)
 
     objects = UserManager()
