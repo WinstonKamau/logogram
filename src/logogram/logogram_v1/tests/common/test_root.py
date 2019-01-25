@@ -1,5 +1,7 @@
 '''Test the common root for the project '''
 from logogram_v1.tests.base_test import BaseTestCase
+from logogram_v1.presentation.common.root import api_root
+from django.test import RequestFactory
 
 
 class RootView(BaseTestCase):
@@ -24,3 +26,14 @@ class RootView(BaseTestCase):
         '''
         root_view_response = self.client.post("/api/v1/")
         self.assertEqual(root_view_response.status_code, 405)
+
+    def test_api_root_method(self):
+        '''
+        Test the return value of the api_root method is returned
+        '''
+        self.factory = RequestFactory()
+        request = self.factory.get('/api/v1/')
+        response = api_root(request)
+        self.assertEqual(response.status_code, 200)
+        welcome_message = "Welcome to the Logogram Application."
+        self.assertEqual(response.data, welcome_message)
