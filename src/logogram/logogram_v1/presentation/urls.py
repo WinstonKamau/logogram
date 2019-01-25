@@ -7,7 +7,8 @@ from logogram_v1.presentation.common.root import api_root
 urlpatterns = [
     url(r'^$', api_root),
     url(r'^users/$', users.UsersView.as_view(), name='users'),
-    url(r'^users/(?P<pk>[0-9]+)/$', users.UsersDetailView.as_view(), name='users-detail'),
+    url(r'^users/(?P<pk>[0-9]+)/$', users.UsersDetailView.as_view(),
+        name='users-detail'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

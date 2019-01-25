@@ -1,6 +1,5 @@
 '''Test entity creation and persistence of the Users entity '''
 from logogram_v1.tests.base_test import BaseTestCase
-from logogram_v1.application.users.users import UsersSerializer
 from logogram_v1.domain_persistence.users.models import Users
 
 
@@ -10,7 +9,8 @@ class UsersViewPresentation(BaseTestCase):
         super(UsersViewPresentation, self).setUp()
         self.user_data = {"first_name": "Pinocchio", "last_name": "Cartoon",
                           "email": "pinocchio@gmail.com"}
-        self.post_user_response = self.client.post("/api/v1/users/", self.user_data)
+        self.post_user_response = self.client.post(
+            "/api/v1/users/", self.user_data)
 
     def test_post_user(self):
         '''
@@ -55,7 +55,8 @@ class UsersDetailPresentation(BaseTestCase):
         Users.objects.create(email="simpsons@gmail.com", first_name="Homer",
                              last_name="Simpsons")
         user = Users.objects.get(email="simpsons@gmail.com")
-        get_user_response = self.client.get("/api/v1/users/{}/".format(user.id))
+        get_user_response = self.client.get(
+            "/api/v1/users/{}/".format(user.id))
         self.assertEqual(get_user_response.status_code, 200)
         self.assertIn(user.first_name,
                       get_user_response.content.decode("utf-8"))

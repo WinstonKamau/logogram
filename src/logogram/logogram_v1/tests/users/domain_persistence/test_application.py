@@ -36,7 +36,8 @@ class UsersApplication(BaseTestCase):
         self.serializer_data_2['email'] = normal_email_length
         serializer_2 = UsersSerializer(data=self.serializer_data_2)
         self.assertFalse(serializer_2.is_valid())
-        name_error_message = "Ensure this field has no more than 30 characters."
+        name_error_message = ('Ensure this field has no more than '
+                              '30 characters.')
         self.assertIn(name_error_message, serializer_2.errors["first_name"])
         self.assertIn(name_error_message, serializer_2.errors["last_name"])
         self.assertIsNone(serializer_2.errors.get("email"))

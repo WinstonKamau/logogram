@@ -1,7 +1,6 @@
 from logogram_v1.domain_persistence.users.models import Users
 from logogram_v1.application.users.users import UsersSerializer
 from rest_framework import generics
-from django.shortcuts import get_object_or_404
 
 
 class UsersView(generics.ListCreateAPIView):
