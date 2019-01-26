@@ -1,4 +1,4 @@
-'''Test entity creation and persistence of the Users entity '''
+"""Test entity creation and persistence of the Users entity """
 from logogram_v1.tests.base_test import BaseTestCase
 from logogram_v1.application.users.users import UsersSerializer
 
@@ -12,18 +12,18 @@ class UsersApplication(BaseTestCase):
         self.normal_name_length = "shortname"
 
     def test_users_serializer_class(self):
-        '''
+        """
         Test that the User Serializer class contains the required fields.
-        '''
+        """
         self.assertEqual(set(self.serializer_data.keys()),
                          set(['first_name', 'last_name', 'email', 'password']))
 
     def test_users_serializer_attribute_length(self):
-        '''
+        """
         Test that the first_name attribute on a User Serializer class will
         raise an invalid attribute when:
             - The length of the first_name is greater than thirty characters.
-        '''
+        """
         long_name_length = "afirstnamegreatherthanthirtycharacters"
         normal_email_length = "example@gmail.com"
         self.serializer_data['first_name'] = self.normal_name_length
@@ -45,11 +45,11 @@ class UsersApplication(BaseTestCase):
         self.assertIsNone(serializer_2.errors.get("email"))
 
     def test_users_serializer_attribute_blank(self):
-        '''
+        """
         Test that the first_name, last_name and email attribute on a User
         Serializer class will:
             - raise an invalid attribute when the attribute is blank
-        '''
+        """
         self.serializer_data['first_name'] = ""
         self.serializer_data['last_name'] = ""
         self.serializer_data['email'] = ""
@@ -62,9 +62,9 @@ class UsersApplication(BaseTestCase):
         self.assertIn(blank_error_message, serializer.errors["password"])
 
     def test_email_uniqueness(self):
-        '''
+        """
         Test that the email attribute is unique and cannot be added twice
-        '''
+        """
         self.serializer_data['first_name'] = self.normal_name_length
         self.serializer_data['last_name'] = self.normal_name_length
         self.serializer_data['email'] = "example@gmail.com"
