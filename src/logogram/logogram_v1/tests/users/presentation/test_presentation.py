@@ -65,7 +65,8 @@ class UsersDetailPresentation(BaseTestCase):
         self.assertIn(user.last_name,
                       get_user_response.content.decode("utf-8"))
         self.assertIn(user.email, get_user_response.content.decode("utf-8"))
-        self.assertNotIn("my_password", get_user_response.content.decode("utf-8"))
+        self.assertNotIn("my_password",
+                         get_user_response.content.decode("utf-8"))
 
     def test_not_found_message_for_inexistent_user(self):
         '''

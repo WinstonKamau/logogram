@@ -4,7 +4,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from logogram_v1.presentation.users import users
 from logogram_v1.presentation.common.root import api_root
 from logogram_v1.presentation.flashcards import flashcards
-from django.http import request
 
 urlpatterns = [
     url(r'^$', api_root),

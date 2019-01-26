@@ -2,8 +2,8 @@
 from logogram_v1.tests.base_test import BaseTestCase
 from logogram_v1.domain_persistence.users.models import Users
 from logogram_v1.domain_persistence.flashcards.models import FlashCards
-from logogram_v1.presentation.flashcards.flashcards import (FlashCardsView, 
-    FlashCardsDetailView)
+from logogram_v1.presentation.flashcards.flashcards import (
+    FlashCardsView, FlashCardsDetailView)
 from django.test import RequestFactory
 
 
@@ -87,8 +87,7 @@ class FlashCardsViewPresentation(BaseTestCase):
         database
         """
         data = {"name": "Flash Card 3", "description": "Card Description 3"}
-        Users.objects.create(email="timon@gmail.com", first_name="timon",
-                
+        Users.objects.create(email="timon@gmail.com", first_name="timon",             
                              last_name="pumba")
         Users.objects.create(email="homer@gmail.com", first_name="homer",
                              last_name="simpsons")
@@ -107,7 +106,7 @@ class FlashCardsDetailViewPresentation(BaseTestCase):
             email="buttercup@gmail.com", first_name="Butter", last_name="Cup")
         self.buttercup = Users.objects.get(email="buttercup@gmail.com")
         FlashCards.objects.create(name="Flash Card 1", user=self.buttercup,
-                            description="Card  1 Description")
+                                  description="Card  1 Description")
         self.flash_card = FlashCards.objects.get(name="Flash Card 1")
         super(FlashCardsDetailViewPresentation, self).setUp()
 
@@ -172,9 +171,8 @@ class FlashCardsDetailViewPresentation(BaseTestCase):
         before_delete_flash_card = FlashCards.objects.filter(
             name=self.flash_card.name).first()
         self.assertIsNotNone(before_delete_flash_card)
-        delete_response = self.client.delete(
+        self.client.delete(
             "/api/v1/flashcards/{}/".format(self.flash_card.id))
         after_delete_flash_card = FlashCards.objects.filter(
             name=self.flash_card.name).first()
         self.assertIsNone(after_delete_flash_card)
-        

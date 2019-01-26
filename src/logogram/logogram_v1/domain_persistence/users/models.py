@@ -44,8 +44,9 @@ class Users(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first_name'), max_length=30)
     last_name = models.CharField(_('last_name'), max_length=30)
     date_joined = models.DateTimeField(_('date_joined'), default=timezone.now)
-    is_staff = models.BooleanField(_('staff status'), default=False, help_text=_(
-        'Designates whether the user can log into this admin site.'),)
+    is_staff = models.BooleanField(
+        _('staff status'), default=False, help_text=_(
+            'Designates whether the user can log into this admin site.'),)
 
     objects = UserManager()
 

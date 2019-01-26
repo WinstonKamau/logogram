@@ -49,14 +49,16 @@ class UserManagerTestCase(BaseTestCase):
         self.assertTrue(user.is_staff)
 
     def test_create_super_user_raises_error_on_false_is_superuser(self):
-        with self.assertRaisesMessage(ValueError, 'Superuser must have is_superuser=True.'):
+        message = "Superuser must have is_superuser=True."
+        with self.assertRaisesMessage(ValueError, message):
             Users.objects.create_superuser(
                 username='test', email='test@test.com',
                 password='test', is_superuser=False,
             )
 
     def test_create_superuser_raises_error_on_false_is_staff(self):
-        with self.assertRaisesMessage(ValueError, 'Superuser must have is_staff=True.'):
+        message = "Superuser must have is_staff=True."
+        with self.assertRaisesMessage(ValueError, message):
             Users.objects.create_superuser(
                 email='test@test.com', password='test', is_staff=False,
             )

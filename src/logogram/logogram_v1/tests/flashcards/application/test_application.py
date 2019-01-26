@@ -100,7 +100,7 @@ class FlashCardsSerializerApplication(BaseTestCase):
         serializer_data['description'] = "Short Description"
         request = RequestFactory()
         request.user = None
-        serializer = FlashCardsSerializer(data=serializer_data, 
+        serializer = FlashCardsSerializer(data=serializer_data,
                                           context={"request": request})
         self.assertFalse(serializer.is_valid())
         request_error_message = "This field is required."
@@ -114,7 +114,7 @@ class FlashCardsSerializerApplication(BaseTestCase):
         serializer = FlashCardsSerializer()
         with self.assertRaises(ValidationError):
             serializer.to_internal_value(data)
-    
+
     def test_user_not_submitted_to_internal_value(self):
         """
         Test that a request is not submitted to the to_internal_value method
@@ -122,7 +122,6 @@ class FlashCardsSerializerApplication(BaseTestCase):
         data = {"name": "Flash Card 1", "description": "Card Description"}
         Users.objects.create(first_name="Professor", last_name="Utonium",
                              email="utonium@gmail.com")
-        user = Users.objects.get(email="utonium@gmail.com")
         request = RequestFactory()
         request.user = None
         serializer = FlashCardsSerializer(context={"request": request})
