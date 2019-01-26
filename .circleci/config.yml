@@ -29,10 +29,12 @@ jobs:
       - run:
           name: run tests
           command: |
-            pipenv run coverage run src/logogram/manage.py test
-            pipenv run coverage html
+            cd src/logogram/
+            pipenv run coverage run --rcfile=../../.coveragerc manage.py test
+            pipenv run coverage report --rcfile=../../.coveragerc
+            pipenv run coverage html --rcfile=../../.coveragerc
             export COVERALLS_REPO_TOKEN=${COVERALLS_REPO_TOKEN}
-            pipenv run coveralls
+            pipenv run coveralls --rcfile=../../.coveragerc
 
       - store_artifacts:
           path: src/logogram/htmlcov

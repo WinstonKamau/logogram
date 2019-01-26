@@ -16,7 +16,7 @@ class UsersApplication(BaseTestCase):
         Test that the User Serializer class contains the required fields.
         '''
         self.assertEqual(set(self.serializer_data.keys()),
-                         set(['first_name', 'last_name', 'email']))
+                         set(['first_name', 'last_name', 'email', 'password']))
 
     def test_users_serializer_attribute_length(self):
         '''
@@ -29,11 +29,13 @@ class UsersApplication(BaseTestCase):
         self.serializer_data['first_name'] = self.normal_name_length
         self.serializer_data['last_name'] = self.normal_name_length
         self.serializer_data['email'] = normal_email_length
+        self.serializer_data['password'] = "password"
         serializer = UsersSerializer(data=self.serializer_data)
         self.assertTrue(serializer.is_valid())
         self.serializer_data_2['first_name'] = long_name_length
         self.serializer_data_2['last_name'] = long_name_length
         self.serializer_data_2['email'] = normal_email_length
+        self.serializer_data['password'] = "password"
         serializer_2 = UsersSerializer(data=self.serializer_data_2)
         self.assertFalse(serializer_2.is_valid())
         name_error_message = ('Ensure this field has no more than '
@@ -57,6 +59,7 @@ class UsersApplication(BaseTestCase):
         self.assertIn(blank_error_message, serializer.errors["first_name"])
         self.assertIn(blank_error_message, serializer.errors["last_name"])
         self.assertIn(blank_error_message, serializer.errors["email"])
+        self.assertIn(blank_error_message, serializer.errors["password"])
 
     def test_email_uniqueness(self):
         '''
@@ -65,12 +68,14 @@ class UsersApplication(BaseTestCase):
         self.serializer_data['first_name'] = self.normal_name_length
         self.serializer_data['last_name'] = self.normal_name_length
         self.serializer_data['email'] = "example@gmail.com"
+        self.serializer_data['password'] = "password"
         serializer = UsersSerializer(data=self.serializer_data)
         self.assertTrue(serializer.is_valid())
         serializer.save()
         self.serializer_data_2['first_name'] = self.normal_name_length
         self.serializer_data_2['last_name'] = self.normal_name_length
         self.serializer_data_2['email'] = "example@gmail.com"
+        self.serializer_data['password'] = "password"
         serializer_2 = UsersSerializer(data=self.serializer_data_2)
         self.assertFalse(serializer_2.is_valid())
         email_error_message = ('The email address you entered has already '

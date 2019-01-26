@@ -5,8 +5,8 @@ from django.utils import timezone
 
 
 class FlashCards(models.Model):
-    name = models.CharField(_('flash_card_name'), max_length=30, blank=True)
-    description = models.TextField(_('flash_card_description'))
+    name = models.CharField(_('flash_card_name'), max_length=30)
+    description = models.TextField(_('flash_card_description'), blank=True)
     creation_date = models.DateTimeField(_('date_created'),
                                          default=timezone.now)
     modification_date = models.DateTimeField(_('date_modified'),
