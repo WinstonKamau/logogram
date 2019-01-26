@@ -16,10 +16,10 @@ class FlashCardsView(generics.ListCreateAPIView):
     serializer_class = FlashCardsSerializer
 
     def get_queryset(self):
-        '''
+        """
         This view should return a list of all the flashcards for the currently
         authenticated user.
-        '''
+        """
         user = self.request.user
         return FlashCards.objects.filter(user=user)
 
@@ -33,9 +33,9 @@ class FlashCardsDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FlashCardsDetailSerializer
 
     def get_queryset(self):
-        '''
+        """
         This view should return one of the flashcards for the currently
         authenticated user.
-        '''
+        """
         user = self.request.user
         return FlashCards.objects.filter(user=user, id=self.kwargs.get("pk"))
