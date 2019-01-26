@@ -123,4 +123,12 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'logogram_v1.Users'
 
-MIGRATION_MODULES = {"logogram_v1": "logogram_v1.domain_persistence.migrations"}
+MIGRATION_MODULES = {
+    "logogram_v1": "logogram_v1.domain_persistence.migrations"}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
