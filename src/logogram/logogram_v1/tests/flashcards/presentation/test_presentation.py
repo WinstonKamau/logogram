@@ -87,7 +87,7 @@ class FlashCardsViewPresentation(BaseTestCase):
         database
         """
         data = {"name": "Flash Card 3", "description": "Card Description 3"}
-        Users.objects.create(email="timon@gmail.com", first_name="timon",             
+        Users.objects.create(email="timon@gmail.com", first_name="timon",
                              last_name="pumba")
         Users.objects.create(email="homer@gmail.com", first_name="homer",
                              last_name="simpsons")
