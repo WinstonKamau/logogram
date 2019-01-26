@@ -8,7 +8,8 @@ class UsersViewPresentation(BaseTestCase):
     def setUp(self):
         super(UsersViewPresentation, self).setUp()
         self.user_data = {"first_name": "Pinocchio", "last_name": "Cartoon",
-                          "email": "pinocchio@gmail.com"}
+                          "email": "pinocchio@gmail.com",
+                          "password": "password"}
         self.post_user_response = self.client.post(
             "/api/v1/users/", self.user_data)
 
@@ -51,9 +52,10 @@ class UsersDetailPresentation(BaseTestCase):
         '''
         Test that when you make a get request on the /users/pk/ route
             - that you get a user who already exists in database
+            - That hte password of the user is not rendered
         '''
         Users.objects.create(email="simpsons@gmail.com", first_name="Homer",
-                             last_name="Simpsons")
+                             last_name="Simpsons", password="my_password")
         user = Users.objects.get(email="simpsons@gmail.com")
         get_user_response = self.client.get(
             "/api/v1/users/{}/".format(user.id))
@@ -63,6 +65,7 @@ class UsersDetailPresentation(BaseTestCase):
         self.assertIn(user.last_name,
                       get_user_response.content.decode("utf-8"))
         self.assertIn(user.email, get_user_response.content.decode("utf-8"))
+        self.assertNotIn("my_password", get_user_response.content.decode("utf-8"))
 
     def test_not_found_message_for_inexistent_user(self):
         '''

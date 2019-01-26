@@ -6,4 +6,11 @@ class UsersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Users
-        fields = ('first_name', 'last_name', 'email')
+        fields = ('first_name', 'last_name', 'email', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def save(self):
+        user = super().save()
+        user.set_password(self.validated_data['password'])
+        user.save()
+        return user
