@@ -60,16 +60,15 @@ class WordsSerializerApplication(BaseTestCase):
                 context={"request": request}).to_internal_value(data)
         # pass request without flashcard id
         Users.objects.create(email="courage@gmail.com", first_name="courage",
-                        last_name="the cowardly dog")
+                             last_name="the cowardly dog")
         user = Users.objects.get(email="courage@gmail.com")
         request.user = user
         request.parser_context = {"kwargs": {}}
         with self.assertRaises(ValidationError):
             WordsSerializer(
                 context={"request": request}).to_internal_value(data)
-        # Pass none existent flashcard        
+        # Pass none existent flashcard
         request.parser_context = {"kwargs": {"pk": 12345}}
         with self.assertRaises(ValidationError):
             WordsSerializer(
                 context={"request": request}).to_internal_value(data)
-        
