@@ -12,3 +12,6 @@ class FlashCards(models.Model):
     modification_date = models.DateTimeField(_('date_modified'),
                                              auto_now_add=True)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

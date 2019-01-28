@@ -4,6 +4,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from logogram_v1.presentation.users import users
 from logogram_v1.presentation.common.root import api_root
 from logogram_v1.presentation.flashcards import flashcards
+from logogram_v1.presentation.words import words
 
 urlpatterns = [
     url(r'^$', api_root),
@@ -14,6 +15,8 @@ urlpatterns = [
         name='flashcards'),
     url(r'^flashcards/(?P<pk>[0-9]+)/$',
         flashcards.FlashCardsDetailView.as_view(), name='flashcards-detail'),
+    url(r'^flashcards/(?P<pk>[0-9]+)/words/$',
+        words.WordsView.as_view(), name='words'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
