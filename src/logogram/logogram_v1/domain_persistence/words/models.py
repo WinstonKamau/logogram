@@ -12,5 +12,5 @@ class Words(models.Model):
                                          default=timezone.now)
     modification_date = models.DateTimeField(_('date_modified'),
                                              auto_now_add=True)
-    flash_card = models.ForeignKey(FlashCards, on_delete=models.CASCADE)
+    flashcard = models.ForeignKey(FlashCards, on_delete=models.CASCADE)
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
