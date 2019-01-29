@@ -31,3 +31,10 @@ class WordsSerializer(serializers.ModelSerializer):
         if not data_object:
             raise ValidationError(self.Meta.validation_errors.get(
                 data_string))
+
+
+class WordsDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Words
+        fields = ('name', 'description')
