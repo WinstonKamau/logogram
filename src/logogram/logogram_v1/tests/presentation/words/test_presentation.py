@@ -219,7 +219,7 @@ class WordsDetailViewPresentation(BaseTestCase):
         self.assertEqual(self.word.description, "Description Word 1")
         data = {"name": "Edited Name", "description": "Edited Description"}
         self.client.force_login(self.user)
-        response = self.client.put("/api/v1/flashcards/{}/words/{}/".format(
+        self.client.put("/api/v1/flashcards/{}/words/{}/".format(
             self.flashcard.id, self.word.id), data,
             content_type='application/json')
         word = Words.objects.get(id=self.word.id)
