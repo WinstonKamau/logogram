@@ -1,5 +1,6 @@
 from logogram_v1.domain_persistence.words.models import Words
-from logogram_v1.application.words.words import WordsSerializer
+from logogram_v1.application.words.words import (
+    WordsSerializer, WordsDetailSerializer)
 from rest_framework import generics
 from rest_framework.exceptions import PermissionDenied
 from logogram_v1.domain_persistence.flashcards.models import FlashCards
@@ -30,3 +31,24 @@ class WordsView(generics.ListCreateAPIView):
             id=flashcard_id, user=user).first()
         if not flashcard:
             raise PermissionDenied()
+
+
+class WordsDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a word
+    """
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+    serializer_class = WordsDetailSerializer
+    queryset = Words.objects.all()
+
+    def get_queryset(self):
+        """
+        This view should return one of the words for a flashcard of the
+        currently authenticated user.
+        """
+        user = self.request.user
+        WordsView().ensure_users_accesses_only_their_flashcards(
+            self.kwargs["flashcard_pk"], user)
+        return Words.objects.filter(flashcard=self.kwargs["flashcard_pk"],
+                                    user=user, id=self.kwargs["pk"])

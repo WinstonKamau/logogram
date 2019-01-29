@@ -17,6 +17,8 @@ urlpatterns = [
         flashcards.FlashCardsDetailView.as_view(), name='flashcards-detail'),
     url(r'^flashcards/(?P<pk>[0-9]+)/words/$',
         words.WordsView.as_view(), name='words'),
+    url(r'^flashcards/(?P<flashcard_pk>[0-9]+)/words/(?P<pk>[0-9]+)/$',
+        words.WordsDetailView.as_view(), name='words-detail'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

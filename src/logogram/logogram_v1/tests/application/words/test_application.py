@@ -1,6 +1,7 @@
 """Test entity application for Words entity """
 from logogram_v1.tests.base_test import BaseTestCase
-from logogram_v1.application.words.words import WordsSerializer
+from logogram_v1.application.words.words import (
+    WordsSerializer, WordsDetailSerializer)
 from rest_framework.exceptions import ValidationError
 from django.test import RequestFactory
 from logogram_v1.domain_persistence.users.models import Users
@@ -72,3 +73,17 @@ class WordsSerializerApplication(BaseTestCase):
         with self.assertRaises(ValidationError):
             WordsSerializer(
                 context={"request": request}).to_internal_value(data)
+
+
+class WordsDetailSerializerApplication(BaseTestCase):
+
+    def setUp(self):
+        super(WordsDetailSerializerApplication, self).setUp()
+
+    def test_words_serializer_class(self):
+        """
+        Test that the Words Serializer class contains the required fields.
+        """
+        serializer_data = WordsDetailSerializer().data
+        self.assertEqual(set(serializer_data.keys()),
+                         set(['name', 'description']))
