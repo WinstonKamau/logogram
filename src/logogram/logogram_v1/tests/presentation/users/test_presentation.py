@@ -1,6 +1,8 @@
 """Test entity creation and persistence of the Users entity """
 from logogram_v1.tests.base_test import BaseTestCase
 from logogram_v1.domain_persistence.users.models import Users
+from logogram_v1.presentation.users.users import UsersDetailView
+from rest_framework.exceptions import PermissionDenied
 
 
 class UsersViewPresentation(BaseTestCase):
@@ -52,11 +54,12 @@ class UsersDetailPresentation(BaseTestCase):
         """
         Test that when you make a get request on the /users/pk/ route
             - that you get a user who already exists in database
-            - That hte password of the user is not rendered
+            - That the password of the user is not rendered
         """
         Users.objects.create(email="simpsons@gmail.com", first_name="Homer",
                              last_name="Simpsons", password="my_password")
         user = Users.objects.get(email="simpsons@gmail.com")
+        self.client.force_login(user)
         get_user_response = self.client.get(
             "/api/v1/users/{}/".format(user.id))
         self.assertEqual(get_user_response.status_code, 200)
@@ -68,13 +71,41 @@ class UsersDetailPresentation(BaseTestCase):
         self.assertNotIn("my_password",
                          get_user_response.content.decode("utf-8"))
 
-    def test_not_found_message_for_inexistent_user(self):
+    def test_permission_error_if_not_logged_in(self):
         """
-        Test that when you make a get request on the /users/pk/ route for a
-        user that does not exist
-            - that you get a 404 status code
+        Test that accessing the /users/pk route without logging in
+            - will raise an error
         """
-        get_user_response = self.client.get(
-            "/api/v1/users/{}/".format(1234567))
-        self.assertEqual(get_user_response.status_code, 404)
-        self.assertIn("Not found.", get_user_response.content.decode("utf-8"))
+        Users.objects.create(email="simpsons@gmail.com", first_name="Homer",
+                             last_name="Simpsons", password="my_password")
+        user = Users.objects.get(email="simpsons@gmail.com")
+        response = self.client.get("/api/v1/users/{}/".format(user.id))
+        authentication_error = "Authentication credentials were not provided"
+        self.assertEqual(response.status_code, 403)
+        self.assertIn(authentication_error, response.content.decode("utf-8"))
+
+    def test_permission_error_accessing_other_users_details(self):
+        """
+        Test that when accessing the /users/pk/ route and the route determines
+        that the one accessing the details wants to view another users details
+            - That an error is raised
+        """
+        Users.objects.create(email="simpsons@gmail.com", first_name="Homer",
+                             last_name="Simpsons", password="my_password")
+        simpsons = Users.objects.get(email="simpsons@gmail.com")
+        Users.objects.create(email="clark@gmail.com", first_name="Clark",
+                             last_name="Kent", password="my_password")
+        clark = Users.objects.get(email="clark@gmail.com")
+        self.client.force_login(simpsons)
+        response = self.client.get("/api/v1/users/{}/".format(clark.id))
+        authentication_error = ('You do not have permission to perform this'
+                                ' action.')
+        self.assertEqual(response.status_code, 403)
+        self.assertIn(authentication_error, response.content.decode("utf-8"))
+
+    def test_permission_error_raised_check_id(self):
+        """
+        Test error raised when numbers are not similar
+        """
+        with self.assertRaises(PermissionDenied):
+            UsersDetailView().check_pk_similar_to_user_id(2, 3)
