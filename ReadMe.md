@@ -32,6 +32,8 @@ The Logogram application enables users to:
 | /api/v1/flashcards/pk/words/pk/|     PUT   |      False        | Edit a specific word on a flashcard    | 
 | /api/v1/flashcards/pk/words/pk/|  DELETE   |      False        | Delete a specific word on a flashcard  |
 | /api/v1/flashcards/pk/words/pk/|  GET      |      False        | Retrieve a specific word on a flashcard|
+| /api-auth/login/          |     POST       |      True         | Built in URL for user's login          |
+| /api-auth/logout/         |     POST       |      True         | Built in URL for user's logout         |
 
 ## Setup
 
