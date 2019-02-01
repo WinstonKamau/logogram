@@ -72,3 +72,22 @@ Other application dependencies can be found [here](Pipfile)
     cd src/logogram
     pipenv run coverage run --rcfile=../../.coveragerc manage.py test
     pipenv run coverage report --rcfile=../../.coveragerc
+
+### Application Views
+
+#### Visit the root of the application.
+![Root View](docs/api-root.png?raw=true)
+#### Get all users of the application.
+![Get Users](docs/getUsers.png?raw=true)
+#### Create a new user.
+![Create User](docs/postUser.png?raw=true)
+#### Login a user.
+![Login](docs/login.png?raw=true)
+#### Get all flashcards for a user and POST an new one.
+![Flashcards](docs/flashcards.png?raw=true)
+#### RETRIEVE, PUT and DELETE a flaschard of a user.
+![Flashcards](docs/flashcard.png?raw=true)
+#### GET all words or POST a new word in a flashcard.
+![Words](docs/words.png?raw=true)
+#### RETRIEVE, PUT and DELETE a word from a flashcard.
+![Word](docs/word.png?raw=true)
