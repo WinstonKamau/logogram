@@ -14,9 +14,13 @@ get_var() {
 
 get_required_variables () {
     export IP_ADDRESS="$(get_var "ipAddress")"
-    export DJANGO_SETTINGS_MODULE=settings.staging
+    export DJANGO_SETTINGS_MODULE=logogram.staging
     export SECRET_KEY="$(sudo openssl rand -hex 64)"
-    export HOST="backend"
+    export HOST="127.0.0.1"
+    export DATABASE_NAME="$(get_var "databaseName")"
+    export USER="$(get_var "user")"
+    export PASSWORD="$(get_var "password")"
+    export POSTGRES_IP="$(get_var "postgresIp")"
 }
 
 remove_precambrian_pip() {
@@ -28,11 +32,11 @@ remove_precambrian_pip() {
 
 clone_repository() {
     cd ~
-    git clone https://github.com/WinstonKamau/logogram
+    git clone -b  ft-terraform-scripts-167819259 https://github.com/WinstonKamau/logogram
     cd logogram
 }
 
-copy_nginx.conf() {
+copy_nginx_conf() {
     sudo cp ~/logogram/devops/nginx.conf /etc/nginx/conf.d/
 }
 
@@ -49,8 +53,8 @@ configure_logogram_site() {
     python3 ~/logogram/src/logogram/manage.py makemigrations
     python3 ~/logogram/src/logogram/manage.py migrate
     python3 ~/logogram/src/logogram/manage.py collectstatic --no-input
-    sudo nginx -s reload
     sudo systemctl restart supervisor
+    sudo nginx -s reload
 }
 
 
@@ -58,7 +62,7 @@ main() {
     get_required_variables
     remove_precambrian_pip
     clone_repository
-    copy_nginx.conf
+    copy_nginx_conf
     copy_supervisord_conf
     configure_logogram_site
 }

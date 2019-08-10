@@ -25,6 +25,10 @@ resource "google_compute_instance" "logogram-instance" {
   metadata_startup_script = "${file("deploy_logogram.sh")}"
 
   metadata {
-    ipAddress    = "${var.ip-address}"
+    ipAddress    = "${var.ip-address}",
+    databaseName = "${var.database-name}",
+    user         = "${var.user}",
+    password     = "${var.password}",
+    postgresIp   = "${var.postgres-ip}"
   }
 }

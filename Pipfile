@@ -24,6 +24,7 @@ djangorestframework = "==3.9.1"
 Django = "==2.1.5"
 pygments = "*"
 gunicorn = "*"
+"psycopg2-binary" = "*"
 
 [requires]
 python_version = "3"
