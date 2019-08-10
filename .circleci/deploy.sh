@@ -11,14 +11,14 @@ download_terraform() {
 }
 
 prepare_deployment_script() {
-    cd ~/logogram/devops/account-folder
+    cd devops/account-folder
     touch account.json
     echo "${SERVICE_ACCOUNT}" > account.json
 }
 
 
 initialise_terraform() {
-    cd ~/logogram/devops/logogram-infrastructure
+    cd ../logogram-infrastructure
     terraform init -lock=false -backend-config=bucket="${GCP_BUCKET}"
 }
 
@@ -33,7 +33,6 @@ build_current_infrastructure() {
 main() {
     download_terraform
     prepare_deployment_script
-    check_branch
     initialise_terraform
     destroy_previous_infrastructure
     build_current_infrastructure
