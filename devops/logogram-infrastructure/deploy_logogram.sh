@@ -28,7 +28,7 @@ remove_precambrian_pip() {
 
 clone_repository() {
     cd ~
-    git clone https://github.com/WinstonKamau/logogram
+    git clone -b  ft-terraform-scripts-167819259 https://github.com/WinstonKamau/logogram
     cd logogram
 }
 
