@@ -11,3 +11,8 @@ variable "zone" {
 variable "project" {}
 
 variable "ip-address" {}
+
+variable "database-name" {}
+variable "user" {}
+variable "password" {}
+variable "postgres-ip" {}

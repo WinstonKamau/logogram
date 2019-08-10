@@ -15,6 +15,10 @@ get_required_variables () {
     export DJANGO_SETTINGS_MODULE=logogram.staging
     export SECRET_KEY="$(sudo openssl rand -hex 64)"
     export HOST="backend"
+    export DATABASE_NAME="$(get_var "databaseName")"
+    export USER="$(get_var "user")"
+    export PASSWORD="$(get_var "password")"
+    export POSTGRES_IP="$(get_var "postgresIp")"
 }
 start_app () {
     cd /root/logogram/src/logogram || exit
