@@ -16,7 +16,7 @@ get_required_variables () {
     export IP_ADDRESS="$(get_var "ipAddress")"
     export DJANGO_SETTINGS_MODULE=logogram.staging
     export SECRET_KEY="$(sudo openssl rand -hex 64)"
-    export HOST="backend"
+    export HOST="127.0.0.1"
     export DATABASE_NAME="$(get_var "databaseName")"
     export USER="$(get_var "user")"
     export PASSWORD="$(get_var "password")"
@@ -53,8 +53,8 @@ configure_logogram_site() {
     python3 ~/logogram/src/logogram/manage.py makemigrations
     python3 ~/logogram/src/logogram/manage.py migrate
     python3 ~/logogram/src/logogram/manage.py collectstatic --no-input
-    sudo nginx -s reload
     sudo systemctl restart supervisor
+    sudo nginx -s reload
 }
 
 
