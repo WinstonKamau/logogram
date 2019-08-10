@@ -39,3 +39,19 @@ jobs:
       - store_artifacts:
           path: src/logogram/htmlcov
           destination: test-reports
+
+  application-deployment:
+    docker:
+      - image: circleci/python:3.6-jessie-browsers
+    steps:
+      - checkout
+      - run: bash .circleci/deploy.sh
+
+workflows:
+  version: 2
+  deploy-application:
+    jobs:
+      - build
+      - application-deployment:
+          requires:
+            - build
