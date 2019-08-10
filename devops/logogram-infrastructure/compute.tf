@@ -29,6 +29,6 @@ resource "google_compute_instance" "logogram-instance" {
     databaseName = "${var.database-name}",
     user         = "${var.user}",
     password     = "${var.password}",
-    postgresIp   =" ${var.postgres-ip}"
+    postgresIp   = "${var.postgres-ip}"
   }
 }

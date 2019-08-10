@@ -36,7 +36,7 @@ clone_repository() {
     cd logogram
 }
 
-copy_nginx.conf() {
+copy_nginx_conf() {
     sudo cp ~/logogram/devops/nginx.conf /etc/nginx/conf.d/
 }
 
@@ -62,7 +62,7 @@ main() {
     get_required_variables
     remove_precambrian_pip
     clone_repository
-    copy_nginx.conf
+    copy_nginx_conf
     copy_supervisord_conf
     configure_logogram_site
 }

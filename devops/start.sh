@@ -21,7 +21,7 @@ get_required_variables () {
     export POSTGRES_IP="$(get_var "postgresIp")"
 }
 start_app () {
-    cd /root/logogram/src/logogram || exit
+    cd /root/logogram/src/logogram
     gunicorn -b 0.0.0.0:8000 --error-logfile /var/log/logogram-error.log logogram.wsgi
 }
 main () {
