@@ -12,13 +12,13 @@ get_var() {
 }
 get_required_variables () {
     export IP_ADDRESS="$(get_var "ipAddress")"
-    export DJANGO_SETTINGS_MODULE=settings.staging
+    export DJANGO_SETTINGS_MODULE=logogram.staging
     export SECRET_KEY="$(sudo openssl rand -hex 64)"
     export HOST="backend"
 }
 start_app () {
     cd /root/logogram/src/logogram || exit
-    gunicorn -b 0.0.0.0:8000 --error-logfile /var/log/logogram-error.log hirola.wsgi
+    gunicorn -b 0.0.0.0:8000 --error-logfile /var/log/logogram-error.log logogram.wsgi
 }
 main () {
     get_required_variables

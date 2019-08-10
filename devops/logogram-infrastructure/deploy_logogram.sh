@@ -14,7 +14,7 @@ get_var() {
 
 get_required_variables () {
     export IP_ADDRESS="$(get_var "ipAddress")"
-    export DJANGO_SETTINGS_MODULE=settings.staging
+    export DJANGO_SETTINGS_MODULE=logogram.staging
     export SECRET_KEY="$(sudo openssl rand -hex 64)"
     export HOST="backend"
 }
