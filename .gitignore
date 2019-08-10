@@ -11,3 +11,11 @@ htmlcov
 Makefile
 # Ignore visual studio code system dependent settings
 .vscode
+# Do not push service account to Github
+devops/account-folder/account.json
+# Do not push packer variables to Github
+devops/logogram-base-image/variables.json
+# Do not push terraform variables to Github
+devops/logogram-infrastructure/terraform.tfvars
+# Ignore auto-generated terraform files
+devops/logogram-infrastructure/.terraform

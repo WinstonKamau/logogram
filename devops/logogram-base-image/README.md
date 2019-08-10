@@ -43,3 +43,4 @@ packer build --var-file variables.json packer.json
 On the menu page under Compute Engine click on Images.
 ![Images-GCE-Menu](../../docs/images-gce.png)
 You should be able to see the image logogram-base-image on the list of images.
+![Logogram-Base-Image](../../docs/logogram-base-image.png)

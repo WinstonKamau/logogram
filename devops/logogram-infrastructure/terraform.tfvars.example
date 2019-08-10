@@ -1,0 +1,4 @@
+region=<the GCP region you'd like to create your infrastructure. Should be the same region as where you created your IP address>
+zone=<the GCP zone you'd like to create your infrastructure.>
+project=<your GCP project>
+ip-address=<the IP address for your application>
