@@ -7,3 +7,5 @@ DEBUG = False
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = [os.environ.get('HOST'), os.environ.get('IP_ADDRESS')]
+
+STATIC_ROOT = '/var/www/html/static/'

@@ -23,6 +23,7 @@ pytz = "==2018.9"
 djangorestframework = "==3.9.1"
 Django = "==2.1.5"
 pygments = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
