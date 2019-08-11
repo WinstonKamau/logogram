@@ -30,10 +30,22 @@ get_required_variables () {
 }
 
 remove_precambrian_pip() {
+    wait_for_apt_lock
     sudo apt-get remove python3-pip -y
     wget https://bootstrap.pypa.io/get-pip.py
     sudo python3 get-pip.py
     pip3 install pipenv
+}
+
+wait_for_apt_lock() {
+    while [ "" = "" ]; do
+        if sudo flock --timeout 60 --exclusive --close /var/lib/dpkg/lock apt-get -y -o Dpkg::Options::="--force-confold" upgrade
+        then
+            break
+        fi
+        sleep 1
+        echo "Waiting for apt lock file to be deleted"
+    done
 }
 
 clone_repository() {

@@ -22,3 +22,6 @@ terraform.tfvars
 # Ignore chef keys
 chef_node_ssh_key
 chef_node_ssh_key.pub
+syntaxcache/
+trusted_certs/
+.delivery
