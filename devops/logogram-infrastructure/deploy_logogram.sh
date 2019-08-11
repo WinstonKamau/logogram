@@ -12,6 +12,12 @@ get_var() {
     "http://metadata.google.internal/computeMetadata/v1/instance/attributes/${name}"
 }
 
+add_ssh_key () {
+    echo "$(get_var "chefNodePublicKey")" >> /home/ubuntu/.ssh/authorized_keys
+    echo "AllowUsers ubuntu" >> /etc/ssh/sshd_config
+    echo "AuthorizedKeysFile      %h/.ssh/authorized_keys" >> /etc/ssh/sshd_config
+}
+
 get_required_variables () {
     export IP_ADDRESS="$(get_var "ipAddress")"
     export DJANGO_SETTINGS_MODULE=logogram.staging
@@ -60,6 +66,7 @@ configure_logogram_site() {
 
 main() {
     get_required_variables
+    add_ssh_key
     remove_precambrian_pip
     clone_repository
     copy_nginx_conf
