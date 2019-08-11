@@ -11,7 +11,7 @@ Export the name of your GCP bucket
 ```
 export GCP_BUCKET=<bucket name>
 ```
-Run the command below on the root of your repository:
+Run the command below while on the chef-infrastructure directory:
 ```
 terraform init -backend-config=bucket="${GCP_BUCKET}" -backend-config=prefix="/chef-server/default.state"
 ```
@@ -23,7 +23,7 @@ You should get a response like the one below. I have blocked the name of my stor
 
 3. Create a plan.
 The second step involves creating a terraform plan. This produces an output on the console indicating the plan that terraform will execute.
-Run the command below on the root of your repository:
+Run the command below while on the chef-infrastructure directory:
 ```
 terraform plan
 ```
@@ -34,6 +34,7 @@ terraform plan
 
 If you are comfortable with the plan shown in the step above, then create the infrastructure needed for the application by running the command below.
 
+Run the command below while on the chef-infrastructure directory:
 ```
 terraform apply
 ```
