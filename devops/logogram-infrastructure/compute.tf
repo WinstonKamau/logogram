@@ -30,5 +30,6 @@ resource "google_compute_instance" "logogram-instance" {
     user         = "${var.user}",
     password     = "${var.password}",
     postgresIp   = "${var.postgres-ip}"
+    chefNodePublicKey    = "${file("chef_node_ssh_key.pub")}"
   }
 }

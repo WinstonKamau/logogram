@@ -14,6 +14,8 @@ prepare_deployment_script() {
     cd devops/account-folder
     touch account.json
     echo "${SERVICE_ACCOUNT}" > account.json
+    touch ../chef-setup/chef-cookbooks/chef_node_ssh_key.pub
+    echo "${SSH_PUB_KEY}" | base64 --decode -i > ../logogram-infrastructure/chef_node_ssh_key.pub
 }
 
 

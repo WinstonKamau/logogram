@@ -12,6 +12,12 @@ get_var() {
     "http://metadata.google.internal/computeMetadata/v1/instance/attributes/${name}"
 }
 
+add_ssh_key () {
+    echo "$(get_var "chefNodePublicKey")" >> /home/ubuntu/.ssh/authorized_keys
+    echo "AllowUsers ubuntu" >> /etc/ssh/sshd_config
+    echo "AuthorizedKeysFile      %h/.ssh/authorized_keys" >> /etc/ssh/sshd_config
+}
+
 get_required_variables () {
     export IP_ADDRESS="$(get_var "ipAddress")"
     export DJANGO_SETTINGS_MODULE=logogram.staging
@@ -24,10 +30,22 @@ get_required_variables () {
 }
 
 remove_precambrian_pip() {
+    wait_for_apt_lock
     sudo apt-get remove python3-pip -y
     wget https://bootstrap.pypa.io/get-pip.py
     sudo python3 get-pip.py
     pip3 install pipenv
+}
+
+wait_for_apt_lock() {
+    while [ "" = "" ]; do
+        if sudo flock --timeout 60 --exclusive --close /var/lib/dpkg/lock apt-get -y -o Dpkg::Options::="--force-confold" upgrade
+        then
+            break
+        fi
+        sleep 1
+        echo "Waiting for apt lock file to be deleted"
+    done
 }
 
 clone_repository() {
@@ -60,6 +78,7 @@ configure_logogram_site() {
 
 main() {
     get_required_variables
+    add_ssh_key
     remove_precambrian_pip
     clone_repository
     copy_nginx_conf

@@ -8,7 +8,7 @@
         "type": "googlecompute",
         "account_file": "../account-folder/account.json",
         "project_id": "{{user `project_id`}}",
-        "source_image": "ubuntu-1604-xenial-v20180306",
+        "source_image": "ubuntu-1604-xenial-v20190306",
         "ssh_username": "packer",
         "zone": "us-central1-b",
         "image_name": "logogram-base-image"
