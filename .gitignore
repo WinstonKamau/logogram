@@ -16,6 +16,9 @@ devops/account-folder/account.json
 # Do not push packer variables to Github
 devops/logogram-base-image/variables.json
 # Do not push terraform variables to Github
-devops/logogram-infrastructure/terraform.tfvars
+terraform.tfvars
 # Ignore auto-generated terraform files
-devops/logogram-infrastructure/.terraform
+.terraform
+# Ignore chef keys
+chef_node_ssh_key
+chef_node_ssh_key.pub
