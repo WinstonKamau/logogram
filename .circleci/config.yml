@@ -60,3 +60,4 @@ workflows:
             branches:
               only:
                 - develop
+                - ft-chef-setup-167820195
