@@ -1,6 +1,7 @@
 ## Logogram [![Maintainability](https://api.codeclimate.com/v1/badges/2c913b1aab08348e7ad8/maintainability)](https://codeclimate.com/github/WinstonKamau/logogram/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cba7836dc3fa470889fb63e824688f74)](https://www.codacy.com/app/WinstonKamau/logogram?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=WinstonKamau/logogram&amp;utm_campaign=Badge_Grade) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![CircleCI](https://circleci.com/gh/WinstonKamau/logogram.svg?style=svg)](https://circleci.com/gh/WinstonKamau/logogram) [![Coverage Status](https://coveralls.io/repos/github/WinstonKamau/logogram/badge.svg)](https://coveralls.io/github/WinstonKamau/logogram)
 
 Logogram is a simple API that is meant to help users memorize words and their meaining. The API allows users to store words together with their meaning in flashcards that they can retrieve easily. It can be useful for memorizing jargons of a particular field, or practising for your tests.
+Test auto merge
 
 # Description
 
