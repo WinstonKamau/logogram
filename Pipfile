@@ -20,7 +20,7 @@ pylint = "*"
 
 [packages]
 pytz = "==2018.9"
-djangorestframework = "==3.9.1"
+djangorestframework = "==3.11.2"
 Django = "==2.2.13"
 pygments = "*"
 gunicorn = "*"
